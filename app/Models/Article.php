@@ -17,4 +17,9 @@ class Article extends Model
         'category_id',
         'user_id',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

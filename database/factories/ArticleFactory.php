@@ -7,11 +7,12 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Facades\File;
 
 $factory->define(Article::class, function (Faker $faker) {
-    $filepath = storage_path('images');
+    $filepath = storage_path('app/public');
 
     if(!File::exists($filepath)){
         File::makeDirectory($filepath);
     }
+
     return [
         'name' => $faker->text(10),
         'brief' => $faker->text(20),

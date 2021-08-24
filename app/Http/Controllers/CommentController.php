@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
-
-        return view('role', compact('roles'));
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +23,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('create_role');
+        //
     }
 
     /**
@@ -36,11 +34,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        Role::create([
-            'name' => $request->name,
-        ]);
-
-        return redirect()->route('roles.index');
+        //
     }
 
     /**

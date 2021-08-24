@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArticleController extends Controller
 {
@@ -13,7 +15,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::with(['comments' => function ($query) {
+            $query->where('parent_id', null)->get();
+        }])->paginate(5);
+
+        Session::put('user', 1);
 
         return view('article', [
             'articles' => $articles,
