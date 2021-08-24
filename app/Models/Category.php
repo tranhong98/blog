@@ -12,4 +12,8 @@ class Category extends Model
         'name',
     ];
 
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

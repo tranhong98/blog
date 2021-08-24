@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with(['comments' => function ($query) {
-            $query->where('parent_id', null)->get();
-        }])->paginate(5);
-
-        return view('article', [
-            'articles' => $articles,
-        ]);
+        //
     }
 
     /**
@@ -30,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('create_article');
+        //
     }
 
     /**
