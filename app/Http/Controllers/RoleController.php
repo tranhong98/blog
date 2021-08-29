@@ -14,11 +14,9 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles= Role::all();
-        return view('role', [
-            'roles'=>$roles,
-        ]
-        );
+        $roles = Role::all();
+
+        return view('role', compact('roles'));
     }
     /**
      * Show the form for creating a new resource.
@@ -39,7 +37,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         Role::create([
-            'name'=>$request->name,
+            'name' => $request->name,
         ]);
 
         return redirect()->route('roles.index');

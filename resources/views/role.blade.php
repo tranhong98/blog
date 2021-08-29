@@ -1,17 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.manager.index')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('title', 'Role')
 
-<body>
+@section('style')
+<style>
+    .container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        justify-content: flex-end;
+    }
+
+    .page-item {
+        font-size: 18px;
+        padding: 2px;
+    }
+
+    .page-item:hover {
+        border: gray 1px solid;
+        border-radius: 3px;
+    }
+
+    .active {
+        border: gray 1px solid;
+        border-radius: 3px;
+
+    }
+
+    .page-link {
+        width: 16px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+    }
+</style>
+@endsection
+@section('content')
+<div class="container">
     <h1>Role Table </h1>
     <a href="{{route('roles.create')}}">Create</a>
-    <table>
+    <table  border="1" width="100%">
         <thead>
             <tr>
                 <th>ID</th>
@@ -36,7 +69,12 @@
             @endforeach
         </tbody>
     </table>
+<<<<<<< HEAD
 
 </body>
 
 </html>
+=======
+</div>
+@endsection
+>>>>>>> d6cd581b3f583b2422c60db9b008c530ed6bf9f2

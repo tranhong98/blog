@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArticleController extends Controller
 {
@@ -17,6 +18,11 @@ class ArticleController extends Controller
         $articles = Article::with(['comments' => function ($query) {
             $query->where('parent_id', null)->get();
         }])->paginate(5);
+<<<<<<< HEAD
+=======
+
+        Session::put('user', 1);
+>>>>>>> d6cd581b3f583b2422c60db9b008c530ed6bf9f2
 
         return view('article', [
             'articles' => $articles,
