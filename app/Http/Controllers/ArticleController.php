@@ -18,11 +18,6 @@ class ArticleController extends Controller
         $articles = Article::with(['comments' => function ($query) {
             $query->where('parent_id', null)->get();
         }])->paginate(5);
-<<<<<<< HEAD
-=======
-
-        Session::put('user', 1);
->>>>>>> d6cd581b3f583b2422c60db9b008c530ed6bf9f2
 
         return view('article', [
             'articles' => $articles,
@@ -47,7 +42,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nameImage = '';
+        if ($request->image) {
+            $nameImage = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->file('image')->storeAs('public',$nameImage);
+        }
+
+        Article::create([
+            'name' => $request->name,
+            'brief' => $request->brief,
+            'content' => $request->content,
+            'views' => $request->views,
+            'image' => $nameImage,
+        ]);
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -69,7 +78,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $article = Article::find($id);
+
+        return view('edit_article', compact('article'));
     }
 
     /**
@@ -81,7 +93,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Article::where('id', $id)->update([
+            "name" => $request->name,
+            "brief" => $request->brief,
+            "content" => $request->content,
+            "image" => $request->image,
+            "views" => $request->views,
+
+        ]);
+
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -92,6 +114,8 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Article::destroy($id);
+
+        return redirect()->route('articles.index');
     }
 }

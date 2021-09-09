@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Role;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -62,7 +63,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::find($id);
+
+        return view('edit_role', compact('role'));
     }
 
     /**
@@ -74,9 +77,10 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        Role::where('id', $id)->update(["name" => $request->name]);
 
+        return redirect()->route('roles.index');
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -85,6 +89,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Role::destroy($id);
+
+        return redirect()->route('roles.index');
     }
 }

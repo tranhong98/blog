@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users= User::all();
-        return view('user', [
-            'users'=>$users,
-        ]
+        $users = User::paginate(5);
+
+        return view(
+            'user',
+            [
+                'users' => $users,
+            ]
         );
     }
 
@@ -38,7 +42,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -60,7 +70,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('edit_user', compact('user'));
     }
 
     /**
@@ -72,7 +84,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -83,6 +101,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        return redirect()->route('users.index');
     }
 }

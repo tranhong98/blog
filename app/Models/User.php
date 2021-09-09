@@ -9,13 +9,14 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Model
 {
-    protected $table='users';
+    protected $table = 'users';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id',
     ];
 
-    public function role(){
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 }

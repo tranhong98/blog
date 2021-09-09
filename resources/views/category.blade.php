@@ -1,6 +1,6 @@
 @extends('layouts.manager.index')
 
-@section('title', 'Article')
+@section('title', 'Category')
 
 @section('style')
 <style>
@@ -41,55 +41,30 @@
 </style>
 @endsection
 
-@section('text')
-@parent
-Ahihi
-@endsection
-
 @section('content')
 <div class="container">
-    <h1>Article Table</h1>
-    <a href="{{route('articles.create')}}">Create</a>
+    <h1>Category Table </h1>
+    <a href="{{route('categories.create')}}">Create</a>
     <table border="1" width="100%">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Brief</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>Views</th>
-                <th>Comments</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($articles as $article)
+            @foreach($categories as $category)
             <tr>
                 <td>
-                    {{ $article->id }}
+                    {{ $category->id }}
                 </td>
                 <td>
-                    {{ $article->name }}
+                    {{ $category->name }}
                 </td>
                 <td>
-                    {{ $article->brief }}
-                </td>
-                <td>
-                    {{ $article->content }}
-                </td>
-                <td align="center">
-                    <img width="100" height="80" src="{{ asset('storage/' . $article->image) }}" />
-                </td>
-                <td align="center">
-                    {{ $article->views }}
-                </td>
-                <td align="center">
-                    {{ count($article->comments) }}
-                </td>
-                <td>
-                    <a class="btn btn-primary" href="{{route('articles.edit', $article->id)}}">Edit</a>
-                    <form action="{{route('articles.destroy',$article->id)}}" method="POST">
+                    <a class="btn btn-primary" href="{{route('categories.edit', $category->id)}}">Edit</a>
+                    <form action="{{route('categories.destroy',$category->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input class="btn btn-default" type="submit" value="Delete" />
@@ -98,8 +73,6 @@ Ahihi
             </tr>
             @endforeach
         </tbody>
-
     </table>
-    {{ $articles->links() }}
 </div>
 @endsection

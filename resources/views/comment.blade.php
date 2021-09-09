@@ -1,6 +1,6 @@
 @extends('layouts.manager.index')
 
-@section('title', 'User')
+@section('title', 'Comment')
 
 @section('style')
 <style>
@@ -48,51 +48,42 @@ Ahihi
 
 @section('content')
 <div class="container">
-    <h1>User Table</h1>
-    <a href="{{route('users.create')}}">Create</a>
+    <h1>Comment Table</h1>
+    <a href="{{route('comments.create')}}">Create</a>
     <table border="1" width="100%">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Role_ID</th>
-            <th>Action</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($users as $user)
-        <tr>
-            <td>
-                {{ $user->id }}
-            </td>
-            <td>
-                {{ $user->name }}
-            </td>
-            <td>
-                {{ $user->email }}
-            </td>
-            <td>
-                {{ $user->password }}
-            </td>
-            <td>
-                {{ $user->role_id }}
-            </td>
-            <td>
-                    <a class="btn btn-primary" href="{{route('users.edit', $user->id)}}">Edit</a>
-                    <form action="{{route('users.destroy',$user->id)}}" method="POST">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>View</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($comments as $comment)
+            <tr>
+                <td>
+                    {{ $comment->id }}
+                </td>
+                <td>
+                    {{ $comment->content }}
+                </td>
+                <td>
+                    {{ $comment->view }}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{{route('comments.edit', $comment->id)}}">Edit</a>
+                    <form action="{{route('comments.destroy',$comment->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input class="btn btn-default" type="submit" value="Delete" />
                     </form>
                 </td>
-        </tr>
-        @endforeach
-    </tbody>
+            </tr>
+            @endforeach
+        </tbody>
+
     </table>
-    {{ $users->links() }}
+    {{ $comments->links() }}
 </div>
 @endsection
-

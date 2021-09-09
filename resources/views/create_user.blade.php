@@ -9,6 +9,8 @@
 </head>
 
 <body>
+<form action="{{route('users.store')}}" method="POST">
+        @csrf
     <h1>Create User</h1>
     <label for="name">Name </label>
     <input type="text" id="name" name="name" placeholder="Name User"> <br>
@@ -16,6 +18,7 @@
     <input type="text" id="email" name="email" placeholder="Email User"><br>
     <label for="password">Password </label>
     <input type="text" id="password" name="password" placeholder="Password User"><br>
+    <button type="submit">Save</button>
 </body>
 
 </html>
