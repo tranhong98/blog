@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
-    @yield('style')
+    <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
 </head>
+
 <body>
-    @section('text')
-    Hello it's me
-    @show
-
-    @if(session('user'))
-        Dang nhap roi
-    @endif
-    <div style="display: flex;">
-    @include('layouts.manager.sections.menu');
-
-    @yield('content')
+    <div class="container-scroller">
+        @include('layouts.manager.sections.navbar')
+        <div class="container-fluid page-body-wrapper">
+            @include('layouts.manager.sections.sidebar')
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @yield('content')
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid clearfix">
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Create by Tran Thi nHong</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Always try hard, never stay down</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
     </div>
+
+    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('assets/js/misc.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/todolist.js') }}"></script>
 </body>
+
 </html>
