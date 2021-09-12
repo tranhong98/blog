@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="page-header">
-    <h3 class="page-title">Manager Roles</h3>
+    <h3 class="page-title">Manager Role</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
@@ -20,7 +20,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
                             <th>Action</th>
                         </tr>
@@ -29,14 +28,15 @@
                         @foreach($roles as $role)
                         <tr>
                             <td>
-                                {{ $role->id }}
-                            </td>
-                            <td>
                                 {{ $role->name }}
                             </td>
                             <td class="w-25">
                                 <a class="btn btn-warning" href="{{route('roles.edit', $role->id)}}">Edit</a>
-                                <a class="btn btn-danger" href="{{route('roles.destroy',$role->id)}}">Delete</a>
+                                <form action="{{route('roles.destroy',$role->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

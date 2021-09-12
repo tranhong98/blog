@@ -21,11 +21,35 @@
             </a>
         </li>
         <li class="nav-item">
-              <a class="nav-link" href="{{route('roles.index')}}">
+            <a class="nav-link" href="{{route('roles.index')}}">
                 <span class="menu-title">Role</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
-              </a>
-            </li>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('users.index')}}">
+                <span class="menu-title">User</span>
+                <i class="mdi mdi-account menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('articles.index')}}">
+                <span class="menu-title">Article</span>
+                <i class="mdi mdi-book-open-variant menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('comments.index')}}">
+                <span class="menu-title">Comment</span>
+                <i class="mdi mdi-border-color menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('categories.index')}}">
+                <span class="menu-title">Category</span>
+                <i class="mdi mdi-emoticon menu-icon"></i>
+            </a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Basic UI Elements</span>

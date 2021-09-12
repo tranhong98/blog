@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="page-header">
-    <h3 class="page-title">Manager Roles</h3>
+    <h3 class="page-title">Manager Role</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
@@ -17,7 +17,7 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Basic form elements</h4>
+                <h4 class="card-title">Create Role</h4>
                 <form action="{{route('roles.store')}}" method="post">
                     @csrf
                     <div class="form-group">
