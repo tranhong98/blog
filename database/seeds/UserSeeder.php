@@ -14,12 +14,6 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Hong',
-                'email' => 'hong@gmail.com',
-                'password' => '123',
-                'role_id' => 3,
-            ],
-            [
                 'name' => 'Mai',
                 'email' => 'mai@gmail.com',
                 'password' => '456',
@@ -36,5 +30,7 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             User::create($user);
         }
+
+        factory(User::class, 20)->create();
     }
 }

@@ -17,7 +17,11 @@ class ArticleController extends Controller
     {
         $articles = Article::with(['comments' => function ($query) {
             $query->where('parent_id', null)->get();
-        }])->paginate(5);
+        }])
+            ->withCount('comments')
+            ->orderBy('views', 'desc')
+            ->orderBy('comments_count', 'desc')
+            ->paginate(5);
 
         return view('article', [
             'articles' => $articles,
@@ -45,7 +49,7 @@ class ArticleController extends Controller
         $nameImage = '';
         if ($request->image) {
             $nameImage = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->file('image')->storeAs('public',$nameImage);
+            $request->file('image')->storeAs('public', $nameImage);
         }
 
         Article::create([

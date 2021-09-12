@@ -12,4 +12,9 @@ class Comment extends Model
         'view',
         'article_id',
     ];
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

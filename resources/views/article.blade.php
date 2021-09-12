@@ -42,7 +42,7 @@
                                 {{ $article->content }}
                             </td>
                             <td>
-                                <img width="100" height="80" src="{{ asset('storage/' . $article->image) }}" />
+                                <img class="rounded" style="width: 50px;height: 50px" src="{{ asset('storage/' . $article->image) }}" />
                             </td>
                             <td>
                                 {{ $article->views }}
@@ -50,7 +50,7 @@
                             <td>
                                 {{ count($article->comments) }}
                             </td>
-                            <td class="w-25">
+                            <td class="w-18">
                                 <a class="btn btn-warning" href="{{route('articles.edit', $article->id)}}">Edit</a>
                                 <a class="btn btn-danger" href="{{route('articles.destroy',$article->id)}}">Delete</a>
                             </td>

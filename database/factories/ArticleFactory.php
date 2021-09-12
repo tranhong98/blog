@@ -17,7 +17,7 @@ $factory->define(Article::class, function (Faker $faker) {
         'name' => $faker->text(10),
         'brief' => $faker->text(20),
         'content' => $faker->text(50),
-        'image' => $faker->image($filepath,640,480, null,false),
+        'image' => $faker->image($filepath, 640, 480, null,false),
         'views' => $faker->numberBetween(10, 100),
         'category_id'=>null,
         'user_id'=>null,
