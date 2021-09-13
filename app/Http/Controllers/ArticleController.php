@@ -17,15 +17,15 @@ class ArticleController extends Controller
     {
         $articles = Article::with(['comments' => function ($query) {
             $query->where('parent_id', null)->get();
-        }])
-            ->withCount('comments')
+        }])->withCount('comments')
             ->orderBy('views', 'desc')
             ->orderBy('comments_count', 'desc')
             ->paginate(5);
 
-        return view('article', [
-            'articles' => $articles,
-        ]);
+        return view(
+            'article',
+            compact('articles')
+        );
     }
 
     /**
@@ -71,7 +71,13 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::findOrFail($id);
+
+        $article = $article->load(['comments' => function ($query) {
+            $query->where('parent_id', null)->get();
+        }, 'comments.user' , 'comments.childComments.user']);
+
+        return view('detail_article', compact('article'));
     }
 
     /**

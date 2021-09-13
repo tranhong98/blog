@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="{{route('articles.create')}}" class="btn btn-success float-right">Create</a>
-                <table class="table table-hover">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -39,7 +39,7 @@
                                 {{ $article->brief }}
                             </td>
                             <td>
-                                {{ $article->content }}
+                                {!! $article->content !!}
                             </td>
                             <td>
                                 <img class="rounded" style="width: 50px;height: 50px" src="{{ asset('storage/' . $article->image) }}" />
@@ -51,8 +51,9 @@
                                 {{ count($article->comments) }}
                             </td>
                             <td class="w-18">
-                                <a class="btn btn-warning" href="{{route('articles.edit', $article->id)}}">Edit</a>
-                                <a class="btn btn-danger" href="{{route('articles.destroy',$article->id)}}">Delete</a>
+                                <a class="btn btn-primary btn-sm" href="{{route('articles.show', $article->id)}}">Show</a>
+                                <a class="btn btn-warning btn-sm" href="{{route('articles.edit', $article->id)}}">Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{{route('articles.destroy',$article->id)}}">Delete</a>
                             </td>
                         </tr>
                         @endforeach
