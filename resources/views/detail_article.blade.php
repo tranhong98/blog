@@ -37,14 +37,14 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="media">
-                                                            <img class="mr-3 rounded-circle" alt="Img" src="" />
                                                             <div class="media-body">
                                                                 @foreach($article->comments as $comment)
                                                                 <div class="row">
                                                                     <div class="col-8 d-flex">
+                                                                        <img class="mr-3 rounded-circle" alt="Img" src="" />
                                                                         <h5>{{ $comment->user->name }}</h5> <span> - {{ $comment->created_at }}</span>
                                                                     </div>
-                                                                    <div class="col-4">
+                                                                    <div class="col-3">
                                                                         <div class="pull-right reply"> <a href="#"><span><i class="fa fa-reply"></i> reply</span></a> </div>
                                                                     </div>
                                                                 </div>

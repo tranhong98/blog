@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="{{route('users.create')}}" class="btn btn-success float-right mb-3">Create</a>
-                <table class="table table-hover table-bordered">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -38,15 +38,14 @@
                             <td>
                                 {{ $user->role->name }}
                             </td>
-                            <td class="w-18">
-                                <a class="btn btn-warning" href="{{route('users.edit', $user->id)}}">Edit</a>
-                                <a class="btn btn-danger" href="{{route('users.destroy',$user->id)}}">Delete</a>
+                            <td class="w-11">
+                                <a class="btn btn-warning btn-sm" href="{{route('users.edit', $user->id)}}">Edit</a>
+                                <a class="btn btn-danger btn-sm" href="{{route('users.destroy',$user->id)}}">Delete</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
             <div class="px-5">
                 <div class="float-right">

@@ -29,4 +29,9 @@ class User extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function avatar()
+    {
+        return $this->morphOne(Media::class, 'media');
+    }
 }

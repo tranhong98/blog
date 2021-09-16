@@ -39,12 +39,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{route('comments.index')}}">
-                <span class="menu-title">Comment</span>
-                <i class="mdi mdi-border-color menu-icon"></i>
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="{{route('categories.index')}}">
                 <span class="menu-title">Category</span>
                 <i class="mdi mdi-emoticon menu-icon"></i>

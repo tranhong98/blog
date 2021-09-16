@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with(['role', 'avatar'])->paginate(5);
-
-        return view('user', compact('users'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create_user');
+        //
     }
 
     /**
@@ -37,13 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -65,9 +56,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('edit_user', compact('user'));
+        //
     }
 
     /**
@@ -79,13 +68,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -96,8 +79,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
-
-        return redirect()->route('users.index');
+        //
     }
 }

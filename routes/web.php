@@ -11,6 +11,7 @@ Route::group(['prefix' => 'manager'], function () {
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource('articles', 'ArticleController');
+    Route::resource('products', 'ProductController');
     Route::resource('comments', 'CommentController');
     Route::resource('categories', 'CategoryController');
 });

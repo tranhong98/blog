@@ -16,8 +16,8 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <a href="{{route('roles.create')}}" class="btn btn-success float-right">Create</a>
-                <table class="table table-hover">
+                <a href="{{route('roles.create')}}" class="btn btn-success float-right mb-3">Create</a>
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -30,13 +30,15 @@
                             <td>
                                 {{ $role->name }}
                             </td>
-                            <td class="w-25">
-                                <a class="btn btn-warning" href="{{route('roles.edit', $role->id)}}">Edit</a>
-                                <form action="{{route('roles.destroy',$role->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                </form>
+                            <td class="w-11">
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-warning btn-sm" href="{{route('roles.edit', $role->id)}}">Edit</a>
+                                    <form action="{{route('roles.destroy',$role->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

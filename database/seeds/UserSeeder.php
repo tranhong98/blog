@@ -31,6 +31,6 @@ class UserSeeder extends Seeder
             User::create($user);
         }
 
-        factory(User::class, 20)->create();
+        factory(User::class, 10)->create();
     }
 }

@@ -23,7 +23,6 @@
                             <th>Name</th>
                             <th>Brief</th>
                             <th>Content</th>
-                            <th>Image</th>
                             <th>Views</th>
                             <th>Comments</th>
                             <th>Action</th>
@@ -42,15 +41,12 @@
                                 {!! $article->content !!}
                             </td>
                             <td>
-                                <img class="rounded" style="width: 50px;height: 50px" src="{{ asset('storage/' . $article->image) }}" />
-                            </td>
-                            <td>
                                 {{ $article->views }}
                             </td>
                             <td>
                                 {{ count($article->comments) }}
                             </td>
-                            <td class="w-18">
+                            <td class="w-11">
                                 <a class="btn btn-primary btn-sm" href="{{route('articles.show', $article->id)}}">Show</a>
                                 <a class="btn btn-warning btn-sm" href="{{route('articles.edit', $article->id)}}">Edit</a>
                                 <a class="btn btn-danger btn-sm" href="{{route('articles.destroy',$article->id)}}">Delete</a>
@@ -59,7 +55,11 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $articles->links() }}
+            </div>
+            <div class="px-5">
+                <div class="float-right">
+                    {{ $articles->links() }}
+                </div>
             </div>
         </div>
     </div>
