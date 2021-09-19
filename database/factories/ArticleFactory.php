@@ -17,7 +17,6 @@ $factory->define(Article::class, function (Faker $faker) {
         'brief' => $faker->realText(20),
         'content' => $faker->realText(100),
         'views' => $faker->numberBetween(10, 100),
-        'category_id' => $faker->numberBetween(1, 10),
         'user_id' => $faker->numberBetween(3, 50),
     ];
 });

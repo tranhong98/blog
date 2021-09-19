@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Media;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -28,9 +29,19 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            User::create($user);
+            $userCreated = User::create($user);
+
+            factory(Media::class)->create([
+                'media_type' => User::class,
+                'media_id' => $userCreated->id,
+            ]);
         }
 
-        factory(User::class, 10)->create();
+        factory(User::class, 10)->create()->each(function ($user) {
+            factory(Media::class)->create([
+                'media_type' => User::class,
+                'media_id' => $user->id,
+            ]);
+        });
     }
 }

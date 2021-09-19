@@ -11,7 +11,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->realText(20),
         'price' => $faker->numberBetween(1000, 10000),
         'number' => $faker->numberBetween(1, 10),
-        'category_id' => null,
         'user_id' => null,
     ];
 });

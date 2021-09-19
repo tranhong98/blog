@@ -19,7 +19,6 @@ class CreateArticlesTable extends Migration
             $table->string('brief');
             $table->string('content');
             $table->unsignedInteger('views')->default();
-            $table->unsignedInteger('category_id')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });

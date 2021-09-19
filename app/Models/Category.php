@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'categories';
-
     protected $fillable = [
         'name',
+        'categorizable_id',
+        'categorizable_type',
     ];
 
-    public function article()
+    public function categorizable()
     {
-        return $this->belongsTo(Article::class);
+        return $this->morphTo(Article::class);
     }
 }

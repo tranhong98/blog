@@ -13,7 +13,6 @@ class Article extends Model
         'brief',
         'content',
         'views',
-        'category_id',
         'user_id',
     ];
 
@@ -30,5 +29,10 @@ class Article extends Model
     public function medias()
     {
         return $this->morphMany(Media::class, 'media');
+    }
+
+    public function categories()
+    {
+        return $this->morphMany(Category::class, 'categorizable');
     }
 }

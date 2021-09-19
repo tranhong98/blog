@@ -15,9 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with(['comments' => function ($query) {
-            $query->where('parent_id', null)->get();
-        }])->withCount('comments')
+        $articles = Article::with(['comments', 'categories'])
+            ->withCount('comments')
             ->orderBy('views', 'desc')
             ->orderBy('comments_count', 'desc')
             ->paginate(5);
@@ -75,7 +74,7 @@ class ArticleController extends Controller
 
         $article = $article->load(['comments' => function ($query) {
             $query->where('parent_id', null)->get();
-        }, 'comments.user' , 'comments.childComments.user']);
+        }, 'comments.user', 'comments.childComments.user']);
 
         return view('detail_article', compact('article'));
     }

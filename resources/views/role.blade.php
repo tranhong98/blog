@@ -1,14 +1,14 @@
 @extends('layouts.manager.index')
 
-@section('title', 'Manager Role')
+@section('title', 'Manager Roles')
 
 @section('content')
 <div class="page-header">
-    <h3 class="page-title">Manager Role</h3>
+    <h3 class="page-title">Manager Roles</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Manager Role</li>
+            <li class="breadcrumb-item active" aria-current="page">Manager Roles</li>
         </ol>
     </nav>
 </div>

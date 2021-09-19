@@ -11,9 +11,9 @@ $factory->define(Media::class, function (Faker $faker) {
     if (!File::exists($filepath)) {
         File::makeDirectory($filepath);
     }
-    static $id = 1;
+
     return [
         'name' => $faker->image($filepath),
-        'media_id' => $id++,
+
     ];
 });

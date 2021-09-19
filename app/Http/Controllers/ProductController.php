@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with(['medias', 'category'])->paginate(5);
+
+        return view('product', compact('products'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('create_product');
     }
 
     /**
@@ -34,7 +37,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'number' => $request->number,
+        ]);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -56,7 +66,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+
+        return view('edit_product', compact('product'));
     }
 
     /**
@@ -68,7 +80,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Product::where('id', $id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'number' => $request->number,
+        ]);
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -79,6 +98,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::destroy($id);
+
+        return view('product', compact('products'));
     }
 }
