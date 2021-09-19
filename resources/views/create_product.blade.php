@@ -36,6 +36,14 @@
                         <label for="name">Number</label>
                         <input type="number" name="number" class="form-control" id="number" placeholder="Enter Name Number">
                     </div>
+                    <div class="form-group">
+                        <label for="name">Number</label>
+                        <select name="category" class="form-control">
+                            @foreach($categories as $category)
+                            <option value="{{$category->name}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                     <a href="{{route('products.index')}}" class="btn btn-light">Cancel</a>
                 </form>

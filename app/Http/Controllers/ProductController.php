@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('create_product');
+        $categories = Category::where('categorizable_type', Product::class)->get();
+
+        return view('create_product', compact('categories'));
     }
 
     /**
@@ -37,12 +40,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'number' => $request->number,
         ]);
+
+        $category = Category::create([
+            'name' =>$request->category,
+        ]);
+
+        $product->category()->associate($category);
 
         return redirect()->route('products.index');
     }
