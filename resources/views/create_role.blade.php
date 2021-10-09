@@ -3,6 +3,10 @@
 @section('title', 'Manager Role')
 
 @section('content')
+@if($error){
+    @dd($error)
+}
+@endif
 <div class="page-header">
     <h3 class="page-title">Manager Role</h3>
     <nav aria-label="breadcrumb">

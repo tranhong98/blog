@@ -37,8 +37,9 @@
                         <input type="number" name="number" class="form-control" id="number" placeholder="Enter Name Number">
                     </div>
                     <div class="form-group">
-                        <label for="name">Number</label>
+                        <label for="name">Category</label>
                         <select name="category" class="form-control">
+                            <option value="">Choose Category</option>
                             @foreach($categories as $category)
                             <option value="{{$category->name}}">{{$category->name}}</option>
                             @endforeach

@@ -47,9 +47,15 @@
                                 {{ count($article->comments) }}
                             </td>
                             <td class="w-11">
-                                <a class="btn btn-primary btn-sm" href="{{route('articles.show', $article->id)}}">Show</a>
-                                <a class="btn btn-warning btn-sm" href="{{route('articles.edit', $article->id)}}">Edit</a>
-                                <a class="btn btn-danger btn-sm" href="{{route('articles.destroy',$article->id)}}">Delete</a>
+                                <div class="d-flex justify-content-between">
+                                    <a class="btn btn-primary btn-sm" href="{{route('articles.show', $article->id)}}">Show</a>
+                                    <a class="btn btn-warning btn-sm" href="{{route('articles.edit', $article->id)}}">Edit</a>
+                                    <form action="{{route('articles.destroy',$article->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

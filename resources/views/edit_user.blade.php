@@ -1,26 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="{{route('users.update', $user->id)}}" method="POST">
-        @csrf
-        @method('PUT')
-        <h1> Edit User</h1>
-        <label for="name">Name </label>
-        <input type="text" id="name" name="name" placeholder="Name User" value="{{$user->name}}"></br>
-        <label for="email">Email </label>
-        <input type="text" id="email" name="email" placeholder="Email User" value="{{$user->email}}"></br>
-        <label for="password">Password </label>
-        <input type="password" id="password" name="password" placeholder="Password User" value="{{$user->password}}"></br>
-        <button type="submit">Save</button>
-    </form>
-</body>
-
 </html>
+@extends('layouts.manager.index')
+
+@section('title', 'Manager Users')
+
+@section('content')
+<div class="page-header">
+    <h3 class="page-title">Manager Users</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item "><a href="{{route('roles.index')}}">Manager Users</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit User</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit User</h4>
+                <form action="{{route('users.update', $user->id)}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="{{$user->name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Email</label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter Email" value="{{$user->email}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Password</label>
+                        <input type="text" name="password" class="form-control" id="password" placeholder="Enter Password" value="{{$user->password}}">
+                    </div>
+                    <button type="submit" class="btn btn-gradient-success mr-2">Save</button>
+                    <a href="{{route('users.index')}}" class="btn btn-gradient-light">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Media;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -17,13 +18,13 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Mai',
                 'email' => 'mai@gmail.com',
-                'password' => '456',
+                'password' => Hash::make('123456'),
                 'role_id' => 2,
             ],
             [
                 'name' => 'Phuong',
                 'email' => 'phuong@gmail.com',
-                'password' => '789',
+                'password' => Hash::make('123456'),
                 'role_id' => 1,
             ],
         ];

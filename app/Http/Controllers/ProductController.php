@@ -48,10 +48,10 @@ class ProductController extends Controller
         ]);
 
         $category = Category::create([
-            'name' =>$request->category,
+            'name' => $request->category,
         ]);
 
-        $product->category()->associate($category);
+        $product->category()->save($category);
 
         return redirect()->route('products.index');
     }
@@ -109,6 +109,6 @@ class ProductController extends Controller
     {
         Product::destroy($id);
 
-        return view('product', compact('products'));
+        return redirect()->route('products.index');
     }
 }

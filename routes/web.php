@@ -1,12 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'manager'], function () {
+Auth::routes();
+
+Route::group(['prefix' => 'manager', 'middleware' => ['auth', 'admin' ]], function () {
     Route::get('/', 'DashboardController@index')->name('dashboard');
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');

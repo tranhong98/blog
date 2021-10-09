@@ -45,6 +45,11 @@
                     </tbody>
                 </table>
             </div>
+            <div class="px-5">
+                <div class="float-right">
+                    {{ $categories->links() }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

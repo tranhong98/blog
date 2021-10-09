@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('create_user');
+        $roles= Role::all();
+
+        return view('create_user', ['roles'=>$roles]);
     }
 
     /**
@@ -37,11 +41,23 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create([
+        $nameImage = '';
+        if ($request->image) {
+            $nameImage = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->file('image')->storeAs('public', $nameImage);
+        }
+
+        $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'role_id' => $request->role,
         ]);
+        $media = Media::create([
+            'name' => $nameImage,
+        ]);
+
+        $user->avatar()->save($media);
 
         return redirect()->route('users.index');
     }

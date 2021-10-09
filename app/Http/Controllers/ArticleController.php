@@ -106,7 +106,6 @@ class ArticleController extends Controller
             "name" => $request->name,
             "brief" => $request->brief,
             "content" => $request->content,
-            "image" => $request->image,
             "views" => $request->views,
 
         ]);
